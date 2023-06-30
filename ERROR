@@ -1,0 +1,50 @@
+///Desenvolva um programa em linguagem C
+///que crie uma matriz de inteiros dinamicamente,
+///com 3 linhas e 4 colunas. O programa deve preencher
+///a matriz com valores aleatórios usando a função rand(),
+///imprimi-los na tela e, em seguida, liberar o espaço
+///utilizado por todos os ponteiros.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    srand(time(NULL));
+    int **mtx;
+    int lin, col;
+    int l, c;
+
+    printf("de as linhas e colunas da matriz\n");
+    scanf("%d %d", &lin, &col);
+
+    mtx = calloc((lin*col), sizeof(float));
+
+    for(l=0; l<lin; l++)
+    {
+        for(c=0; c<col; c++)
+        {
+            *mtx = rand()%20;
+            *mtx++;
+        }
+    mtx++;
+    }
+
+    //imprimindo
+
+     for(l=0; l<lin; l++)
+    {
+        for(c=0; c<col; c++)
+        {
+            printf( "| %d | \t", *mtx);
+            *mtx++;
+        }
+    printf("\n");
+    mtx++;
+    }
+    
+    free(mtx);
+
+    return 0;
+}
